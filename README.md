@@ -5,6 +5,7 @@ This app requires macOS Big Sur, it provides a simple interface to mount APFS Sy
 
 It is mainly for unsupported Big Sur Mac but should work also from a supported Mac, only requirements are:
 
-csrutil disable
-csrutil authenticated-root disable
+- csrutil disable
+- csrutil authenticated-root disable
+
 from a recent T2 Mac is required to boot CMD+R and disable security as explained here: https://support.apple.com/en-us/HT208198
