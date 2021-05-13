@@ -17,7 +17,7 @@ select with cursor and wait few seconds to highlight volume labels, then click O
 		set the_ID to (do shell script "diskutil list | grep -m 1" & space & quoted form of the_Item & space & "| grep -o 'disk[0-9][a-z][0-9]*'")
 		set Check to false
 		set tName to your_selected_device_id as text
-		if tName contains "5:" and tName contains "APFS" and tName does not contain "VM" and tName does not contain "Data" then
+		if tName contains "5:" and tName contains "APFS" and tName does not contain "VM" and tName does not contain "- D" then
 			set Check to true
 		end if
 		if Check is true then
