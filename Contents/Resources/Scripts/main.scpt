@@ -17,20 +17,20 @@ select with cursor and wait few seconds to highlight volume labels, then click O
 		set the_ID to (do shell script "diskutil list | grep -m 1" & space & quoted form of the_Item & space & "| grep -o 'disk[0-9][a-z][0-9]*'")
 		set Check to false
 		set tName to your_selected_device_id as text
-		if tName contains "5:" and tName contains "APFS" and tName does not contain "VM" and tName does not contain "- D" then
+		if  (tName contains "5:" or tName contains "6:" or tName contains "7:" or tName contains "8:" or tName contains "9:") and tName contains "APFS" and (tName does not contain "VM" and tName does not contain "- D" and tName does not contain "Update" and tName does not contain "Preboot" and tName does not contain "Recovery" and tName does not contain "Container") then
 			set Check to true
 		end if
 		if Check is true then
 			try
 				do shell script "mount -o nobrowse -t apfs /dev/" & the_ID & " /System/Volumes/Update/mnt1" with administrator privileges
 				do shell script "open /System/Volumes/Update/mnt1/"
-				display dialog "Big Sur system mounted as rw, opening current path from where you can now make any System modifications (for example patching kext and frameworks binaries)
+				display dialog "Big Sur system mounted as rw, opening current path from where you can now make any System modifications (for example patching kext and frameworks binaries, but make a backup of any replaced item)
 				
 - When ready click rebuild kc button to fix permissions making a new modified snapshot
 
 - Rebuild KC can take up to 5 minutes to complete
 
-- Don't close its app dock icon, when completes it shows a log (to check eventual errors) and notification message" with icon note buttons {"Rebuild KC", "Exit"} default button 1
+- Don't close its app dock icon, when completes it shows a log (to check eventual errors, if there are then without rebooting, copy back the stock replaced files and click again Rebuild KC) and notification message" with icon note buttons {"Rebuild KC", "Exit"} default button 1
 				if button returned of result is "Rebuild KC" then set theresult to do shell script "chown -R 0:0 /System/Volumes/Update/mnt1/System/Library/Extensions ; chmod -R 755 /System/Volumes/Update/mnt1/System/Library/Extensions ; kmutil install --volume-root /System/Volumes/Update/mnt1/ --update-all ; bless --folder /System/Volumes/Update/mnt1/System/Library/CoreServices --bootefi --create-snapshot " with administrator privileges
 				display alert theresult
 			on error the error_message number the error_number
