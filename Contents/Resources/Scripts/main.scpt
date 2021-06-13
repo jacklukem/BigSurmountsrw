@@ -4,7 +4,9 @@ briefly description:
 
 - Choose a disk to locate your BigSur System (also works if booting through external USB Big Sur)
 
-- Select a Big Sur System (not its snapshot diskXs5s1) from the list that you want to mount as rw" with icon note
+- This updated version works also if you have multiple APFS macOS and BigSur installed sharing the same container (it should work also with Monterey)
+
+- Select a Big Sur System (not its snapshot diskXsYs1) from the list that you want to mount as rw" with icon note
 set alldisks to paragraphs of (do shell script "diskutil list")
 set nonbootnumber to (count of alldisks)
 try
