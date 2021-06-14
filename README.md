@@ -12,3 +12,6 @@ from a recent T2 Mac is required to boot CMD+R and disable security as explained
 
 Added also an updated version for multiple APFS macOS and BigSur installed sharing the same container:
 https://github.com/jacklukem/BigSurmountsrw/releases/download/1.0/BigSurmountsrw2.app.zip
+
+if encounter issues in opening the app use this method:
+https://support.apple.com/guide/mac-help/mh40616/mac
